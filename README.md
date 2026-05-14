@@ -112,8 +112,3 @@ Detailed documentation lives in:
 - [docs/python-files/strategies.stoikov_extension.md](docs/python-files/strategies.stoikov_extension.md)
 - [docs/python-files/strategies.constant_spread.md](docs/python-files/strategies.constant_spread.md)
 
-## Caveats
-
-This is a research codebase. The notebooks are the live experimental record.
-
-The backtest is a historical replay approximation, not a full exchange matching engine. The results should be read as evidence for the methodology on this AAPL sample, not as a general profitability claim.
