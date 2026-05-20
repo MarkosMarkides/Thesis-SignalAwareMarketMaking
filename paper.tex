@@ -946,46 +946,26 @@ absolute inventory by 12.6\%. The oracle strategies show that stronger
 volatility and direction signals could produce substantially larger
 gains, especially when both signals are combined.
 
-\begingroup\small\setstretch{1.0}\setlength{\tabcolsep}{4pt}
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1111}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Metric
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Constant Spread
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Baseline Stoikov
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Volatility Oracle
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Direction Oracle
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Combined Oracle
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Forecast Based Extension
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Final PnL & 1,424.20 & 1,376.00 & 1,269.60 & 2,834.30 & 2,605.20 &
-1,312.30 \\
-PnL standard deviation & 1.564 & 1.147 & 0.598 & 1.170 & 0.657 &
-0.846 \\
-1s risk-adjusted PnL & 0.0078 & 0.0103 & 0.0182 & 0.0208 & 0.0340 &
-0.0133 \\
-Average absolute inventory & 63.49 & 45.64 & 26.15 & 47.14 & 28.48 &
-39.88 \\
+\begingroup\scriptsize\setstretch{1.05}\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} lrrrrrr @{}}
+\toprule
+Metric &
+\shortstack[r]{Constant\\Spread} &
+\shortstack[r]{Baseline\\Stoikov} &
+\shortstack[r]{Volatility\\Oracle} &
+\shortstack[r]{Direction\\Oracle} &
+\shortstack[r]{Combined\\Oracle} &
+\shortstack[r]{Forecast\\Based\\Extension} \\
+\midrule
+Final PnL & 1,424.20 & 1,376.00 & 1,269.60 & 2,834.30 & 2,605.20 & 1,312.30 \\
+PnL standard deviation & 1.564 & 1.147 & 0.598 & 1.170 & 0.657 & 0.846 \\
+1s risk-adjusted PnL & 0.0078 & 0.0103 & 0.0182 & 0.0208 & 0.0340 & 0.0133 \\
+Average absolute inventory & 63.49 & 45.64 & 26.15 & 47.14 & 28.48 & 39.88 \\
 Fill rate & 0.0526 & 0.0262 & 0.0296 & 0.0291 & 0.0328 & 0.0283 \\
 Volume & 62,840 & 31,360 & 35,460 & 34,860 & 39,220 & 34,060 \\
-\end{longtable}
+\bottomrule
+\end{tabular*}
 \endgroup
 
 \section{6. Conclusion}\label{conclusion}
