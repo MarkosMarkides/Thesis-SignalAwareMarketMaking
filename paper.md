@@ -11,13 +11,9 @@ This paper investigates whether short-horizon predictive information can improve
 
 Market making; limit order book; Avellaneda and Stoikov; predictive signals; inventory risk; market microstructure
 
-## JEL Classification
-
-C53; C58; C63; G14; G17
-
 ## 1. Introduction
 
-Market making is a liquidity-provision problem in which a trader continuously posts bid and ask quotes while managing the risk of being filled under changing market conditions. Although market makers earn the bid-ask spread, they are also exposed to inventory risk, adverse selection, and execution uncertainty. These risks make quote placement a dynamic control problem rather than a simple spread-capturing strategy.
+Market making is a trading strategy in which a trader continuously provides liquidity by posting both buy and sell orders. The market maker earns the bid-ask spread, but also faces two central risks: adverse selection and inventory risk. These risks make quote placement a dynamic problem rather than a simple spread-capturing strategy.
 
 This paper investigates whether short-horizon predictive information can improve the behaviour of an inventory-aware market-making strategy without replacing the economic structure of the quoting model. The starting point is the Avellaneda and Stoikov framework, which provides an interpretable rule for adjusting quotes around a reservation price. Its structure is attractive because inventory, volatility, and risk aversion each have clear economic roles. However, real limit order book conditions are time-varying, suggesting that a fixed baseline specification may not fully adapt to changing short-horizon risk and order flow pressure.
 
@@ -31,7 +27,7 @@ The results show that the forecast based extension improves risk-adjusted perfor
 
 ### 2.1 Market Making and Its Risks
 
-Market making is a trading strategy where a trader (the market maker) continuously provides liquidity to the market by posting both buy and sell orders. The market maker profits from the bid-ask spread (the difference between the buying price and selling price quoted) but also faces significant risks. According to market microstructure theory, the two primary challenges are: adverse selection and inventory risk.
+Market microstructure theory treats market making as a problem of liquidity provision under risk. By posting buy and sell quotes, the market maker offers liquidity to other traders and earns compensation through the bid-ask spread. This compensation, however, comes with exposure to adverse selection and inventory risk. These two risks motivate much of the theoretical literature reviewed below.
 
 ### 2.2 Adverse Selection and Asymmetric Information Risk
 
