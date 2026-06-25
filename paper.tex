@@ -1006,7 +1006,76 @@ transparent approach for inserting predictive information into an
 interpretable market-making rule and evaluating its effect through
 historical backtesting.
 
-\section{References}\label{references}
+\section{Appendix}\label{appendix}
+
+\begingroup
+\setstretch{1.18}
+\setlength{\parskip}{0.45em}
+
+This appendix summarizes the main implementation details needed to
+reproduce the empirical results. The code used to construct the features,
+train the forecasting models, run the backtests, and generate the
+reported results is available at:
+\url{https://github.com/MarkosMarkides/Thesis-SignalAwareMarketMaking}.
+The LOBSTER data are not redistributed in the repository.
+
+\subsection{Data and Split}\label{data-and-split}
+
+The empirical analysis uses AAPL LOBSTER limit order book data from
+2026-03-02 to 2026-03-31. The order book file is sampled once per second
+and contains 10 price levels on each side of the book. The event file
+contains order submissions, cancellations, deletions, and executions. The
+sample is split chronologically: the first 17 sessions are used for
+training, and the final 5 sessions are used for out-of-sample prediction
+and backtesting.
+
+\subsection{Labels and Forecasts}\label{labels-and-forecasts}
+
+The direction and volatility targets are the 20-second labels defined in
+Section 4.4. The final forecast based strategy uses XGBoost models: a
+classifier for direction and a regressor for volatility. Both models are
+trained only on the training sessions and then applied to the held-out
+test sessions. The main XGBoost settings are 400 trees, learning rate
+0.05, maximum depth 5, subsample 0.8, column subsample 0.8, L2
+regularization 2.0, no L1 regularization, and random seed 42.
+
+\subsection{Strategy Settings}\label{strategy-settings}
+
+The backtest uses a tick size of 0.01, 10-share orders, a maximum
+inventory of plus or minus 100 shares, and zero fees or rebates. The
+Avellaneda and Stoikov parameters are \(\gamma=0.05\), \(k=30.0\), and
+\(T=5.0\). Baseline volatility is estimated from the training sample. The
+signal-aware strategy uses \(\alpha=3.0\) for volatility scaling and a
+one-tick directional skew. The constant spread benchmark uses a fixed
+half spread of 0.02.
+
+\subsection{Backtesting Mechanics}\label{backtesting-mechanics}
+
+The strategy observes the current order book once per second and submits
+one bid quote and one ask quote. Forecasts and features use only
+information available at or before the quote time. Event-message features
+are shifted by one second before use, so the strategy cannot use messages
+from the same second before deciding its quotes. Quotes are rounded to
+the tick grid: bids are rounded down and asks are rounded up. If raw
+quotes would cross, they are adjusted so that the bid remains below the
+ask.
+
+\subsection{Fills and PnL}\label{fills-and-pnl}
+
+Fills are based on historical execution messages from LOBSTER. If the
+strategy quotes at a price level where liquidity already exists, it is
+assumed to be behind that existing liquidity. The quote is filled only if
+later executions at that side of the book are large enough to reach the
+strategy's order. Each side can be filled at most once per second. After
+fills, cash and inventory are updated. PnL is marked to market each
+second as cash plus inventory valued at the current midpoint. Near the
+end of each session, remaining inventory is liquidated at the touch:
+long inventory is sold at the best bid, and short inventory is bought
+back at the best ask.
+
+\endgroup
+
+\originalsection{References}\label{references}
 
 {[}1{]} Lawrence R. Glosten and Paul R. Milgrom. Bid, ask and
 transaction prices in a specialist market with heterogeneously informed
